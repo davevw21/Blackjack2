@@ -26,7 +26,7 @@ values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 
 
 #function to draw cards
 def draw():
-    url = "https://deckofcardsapi.com/api/deck/142dov4bfld4/draw/?count=2"
+    url = "https://deckofcardsapi.com/api/deck/" + id + "/draw/?count=2"
 
     payload={}
     headers = {
@@ -83,12 +83,64 @@ dsum = values(dealer)
 print(dsum)
 print(psum)
 
-#choose to hit or stay
 
+
+#choose to hit or stay
+while psum < 21:
+    print("The sum of your cards is " + str(values(player)) + " would you like to hit or stay?")
+    choice = input("Please press h for hit or s for stay.")
+    if choice == "h":
+        h = player.append(draw())
+        print(player)
+    else:
+        print(player)
+        break
+
+while dsum != 21:
+    if dsum < 17:
+        dealer.append(draw)
+        if dsum < 17:
+            dealer.append(draw)
+            if dsum < 17:
+                dealer.append(draw)
+                if dsum < 17:
+                    dealer.append(draw)
+                    if dsum < 17:
+                        dealer.append(draw)
+                    else:
+                        print(dealer)
+                else:
+                    print(dealer)
+            else:
+                print(dealer)
+        else:
+            print(dealer)
+    else:
+        print("The dealer is holding " + str(dealer) + ".")
+        print("The total of the dealers hand is " + str(dsum) + ".")
+        break
+
+if psum == 21:
+    print("Player hand " + str(player) + ".")
+    print("Dealer hand " + str(dealer) + ".")
+    print("Congratulations, You Got Blackjack!!  You Win!!")
+elif dsum == 21:
+    print("Player hand " + str(player) + ".")
+    print("Dealer hand " + str(dealer) + ".")
+    print("Sorry you lose, the dealer got a Blackjack")
+elif psum > 21:
+    print("Player hand " + str(player) + ".")
+    print("Dealer hand " + str(dealer) + ".")
+    print("sorry, You busted.  You Lose.")
+elif psum < dsum:
+    print("Player hand " + str(player) + ".")
+    print("Dealer hand " + str(dealer) + ".")
+    print("sorry, Dealer wins.")
+'''
 print("The sum of your cards is " + str(values(player)) + " would you like to hit or stay?")
 input("Please press h for hit or s for stay.")
 
-'''
+
 print(sum(player))
 
 
