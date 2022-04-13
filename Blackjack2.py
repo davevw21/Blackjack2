@@ -80,71 +80,79 @@ def values(hand):
 
 psum = values(player)
 dsum = values(dealer)
-print(dsum)
-print(psum)
 
+#Rules to handle a Blackjack for dealer, player, or both.
+if int(psum) == 21 and int(dsum) == 21:
+    print("Player Hand " + str(values(player)) + ".")
+    print("Dealer Hand " + str(values(dealer)) + ".")
+    print("Its a push")
+elif psum == 21:
+    print("Player Hand " + str(values(player)) + ".")
+    print("Dealer Hand " + str(values(dealer)) + ".")
+    print("Congratulations, You got a blackjack, You win!!")
+    quit()
+elif dsum == 21:
+    print("Player Hand " + str(values(player)) + ".")
+    print("Dealer Hand " + str(values(dealer)) + ".")
+    print("Sorry, you lose.  The dealer Got a blackjack.")
+    quit()
 
-
-#choose to hit or stay
-while psum < 21:
-    print("The sum of your cards is " + str(values(player)) + " would you like to hit or stay?")
-    choice = input("Please press h for hit or s for stay.")
-    if choice == "h":
-        h = player.append(draw())
-        print(player)
+#What to do if the player hand does not equal 21
+while psum != 21:
+    values(player)
+    if int(values(player)) > 21:
+        print("Player Hand " + str(values(player)) + ".")
+        print("Dealer Hand " + str(values(dealer)) + ".")
+        print("Sorry, you lose, you busted")
+        quit()
+    elif psum < 21:
+        print("The sum of your cards is " + str(values(player)) + " would you like to hit or stay?")
+        choice = input("Please press h for hit or s for stay then press enter.")
+        if choice == "h":
+            h = player.append(draw())
+            print("Player Hand " + str(player) + ".")
+        elif choice == "s":
+            break
     else:
-        print(player)
         break
 
-while dsum != 21:
-    if dsum < 17:
-        dealer.append(draw)
-        if dsum < 17:
-            dealer.append(draw)
-            if dsum < 17:
-                dealer.append(draw)
-                if dsum < 17:
-                    dealer.append(draw)
-                    if dsum < 17:
-                        dealer.append(draw)
-                    else:
-                        print(dealer)
-                else:
-                    print(dealer)
-            else:
-                print(dealer)
-        else:
-            print(dealer)
-    else:
-        print("The dealer is holding " + str(dealer) + ".")
-        print("The total of the dealers hand is " + str(dsum) + ".")
-        break
 
-if psum == 21:
+#Rules for the dealer hand
+while values(dealer) != 21:
+    if values(dealer) < 17:
+        break
+    elif values(dealer) < 21:
+        print("Sorry, You lose, You busted")
+        break
+    else:
+        dealer.append(draw())
+        if values(dealer) > 17:
+            break
+
+#Scoring of the hand after all other requirements are met. 
+if values(player) == 21:
     print("Player hand " + str(player) + ".")
     print("Dealer hand " + str(dealer) + ".")
     print("Congratulations, You Got Blackjack!!  You Win!!")
-elif dsum == 21:
+elif values(player) == 21:
     print("Player hand " + str(player) + ".")
     print("Dealer hand " + str(dealer) + ".")
     print("Sorry you lose, the dealer got a Blackjack")
-elif psum > 21:
+elif values(player) > 21:
     print("Player hand " + str(player) + ".")
     print("Dealer hand " + str(dealer) + ".")
     print("sorry, You busted.  You Lose.")
-elif psum < dsum:
+elif values(dealer) > 21:
+    print("Player hand " + str(player) + ".")
+    print("Dealer hand " + str(dealer) + ".")
+    print("You win.  Dealer Busted")
+elif values(player) < values(dealer):
     print("Player hand " + str(player) + ".")
     print("Dealer hand " + str(dealer) + ".")
     print("sorry, Dealer wins.")
-'''
-print("The sum of your cards is " + str(values(player)) + " would you like to hit or stay?")
-input("Please press h for hit or s for stay.")
-
-
-print(sum(player))
-
-
-print(calculate_hand(str(player)))
-print(player)
-print(dealer)
-'''
+elif values(player) > values(dealer):
+    print("Player hand " + str(player) + ".")
+    print("Dealer hand " + str(dealer) + ".")
+    print("You win!!!.")
+else:
+    Print("Fix the code")
