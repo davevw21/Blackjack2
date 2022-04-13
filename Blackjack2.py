@@ -21,8 +21,14 @@ id = deckJson['deck_id']
 player = []
 dealer = []
 
+#address the players
+print("Welcome " + name + " let's play Blackjack!")
+print("The cards have been shuffled. You have chosen to play with " + dc + " deck(s).")
+print("Good Luck!")
+
+#commented out values to see if it would work.
 #values
-values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'JACK': 10, 'QUEEN': 10, 'KING': 10}
+#values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'JACK': 10, 'QUEEN': 10, 'KING': 10}
 
 #function to draw cards
 def draw():
@@ -157,10 +163,10 @@ elif values(player) > values(dealer):
     print("Dealer hand " + str(dealer) + ".")
     print("You win!!!.")
 elif values(player) == values(dealer):
+    print("Player hand " + str(player) + ".")
+    print("Dealer hand " + str(dealer) + ".")
     print("Its a push, The hands are equal.")
-    print("Player hand " + str(player) + ".")
-    print("Dealer hand " + str(dealer) + ".")
 else:
-    print("Fix the code")
     print("Player hand " + str(player) + ".")
     print("Dealer hand " + str(dealer) + ".")
+    print("Fix the code")
