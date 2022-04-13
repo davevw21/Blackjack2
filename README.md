@@ -24,7 +24,7 @@ If player gets 21 player wins
 if dealer gets 21 dealer wins
 if both get 21 its a push
 
-if none of these appy:
+if none of these apply:
 a tied hand is a push
 highest hand not exceding 21 wins
 
