@@ -83,17 +83,17 @@ dsum = values(dealer)
 
 #Rules to handle a Blackjack for dealer, player, or both.
 if int(psum) == 21 and int(dsum) == 21:
-    print("Player Hand " + str(values(player)) + ".")
-    print("Dealer Hand " + str(values(dealer)) + ".")
+    print("Player Hand " + str(player) + str(values(player)) + ".")
+    print("Dealer Hand " + str(dealer) + str(values(dealer)) + ".")
     print("Its a push")
 elif psum == 21:
-    print("Player Hand " + str(values(player)) + ".")
-    print("Dealer Hand " + str(values(dealer)) + ".")
+    print("Player Hand " + str(player) +str(values(player)) + ".")
+    print("Dealer Hand " + str(dealer) +str(values(dealer)) + ".")
     print("Congratulations, You got a blackjack, You win!!")
     quit()
 elif dsum == 21:
-    print("Player Hand " + str(values(player)) + ".")
-    print("Dealer Hand " + str(values(dealer)) + ".")
+    print("Player Hand " + str(player) + str(values(player)) + ".")
+    print("Dealer Hand " + str(dealer) +str(values(dealer)) + ".")
     print("Sorry, you lose.  The dealer Got a blackjack.")
     quit()
 
@@ -101,16 +101,18 @@ elif dsum == 21:
 while psum != 21:
     values(player)
     if int(values(player)) > 21:
-        print("Player Hand " + str(values(player)) + ".")
-        print("Dealer Hand " + str(values(dealer)) + ".")
+        print("Player Hand " + str(player) + str(values(player)) + ".")
+        print("Dealer Hand " + str(dealer) + str(values(dealer)) + ".")
         print("Sorry, you lose, you busted")
         quit()
-    elif psum < 21:
+    elif values(player) < 21:
         print("The sum of your cards is " + str(values(player)) + " would you like to hit or stay?")
         choice = input("Please press h for hit or s for stay then press enter.")
         if choice == "h":
             h = player.append(draw())
             print("Player Hand " + str(player) + ".")
+            if values(player) == 21:
+                break
         elif choice == "s":
             break
     else:
@@ -119,17 +121,17 @@ while psum != 21:
 
 #Rules for the dealer hand
 while values(dealer) != 21:
-    if values(dealer) < 17:
+    if values(dealer) > 17:
         break
-    elif values(dealer) < 21:
-        print("Sorry, You lose, You busted")
+    elif values(dealer) > 21:
+        print("You Win!!!  Dealer Busted")
         break
     else:
         dealer.append(draw())
         if values(dealer) > 17:
             break
 
-#Scoring of the hand after all other requirements are met. 
+#Scoring of the hand after all other requirements are met.
 if values(player) == 21:
     print("Player hand " + str(player) + ".")
     print("Dealer hand " + str(dealer) + ".")
@@ -154,5 +156,11 @@ elif values(player) > values(dealer):
     print("Player hand " + str(player) + ".")
     print("Dealer hand " + str(dealer) + ".")
     print("You win!!!.")
+elif values(player) == values(dealer):
+    print("Its a push, The hands are equal.")
+    print("Player hand " + str(player) + ".")
+    print("Dealer hand " + str(dealer) + ".")
 else:
-    Print("Fix the code")
+    print("Fix the code")
+    print("Player hand " + str(player) + ".")
+    print("Dealer hand " + str(dealer) + ".")
